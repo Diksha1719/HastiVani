@@ -1,6 +1,11 @@
+import os
+import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
+
+# Ensure backend directory is in sys.path for serverless and root execution
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.config import settings
 from app.routers.recognition import router as recognition_router
